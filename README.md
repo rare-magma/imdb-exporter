@@ -94,8 +94,8 @@ IMDB_WATCHLIST_ID='ls000111111'
 ```
 
 - `INFLUXDB_HOST` should be the FQDN of the influxdb server.
-- `ORG` should be the name of the influxdb organization that contains the imdb price data bucket defined below.
-- `BUCKET` should be the name of the influxdb bucket that will hold the imdb price data.
+- `ORG` should be the name of the influxdb organization that contains the IMDb data bucket defined below.
+- `BUCKET` should be the name of the influxdb bucket that will hold the IMDb data.
 - `INFLUXDB_API_TOKEN` should be the influxdb API token value.
   - This token should have write access to the `BUCKET` defined above.
 - `IMDB_WATCHLIST_ID` should be the imdb watchlist ID value.
