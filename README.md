@@ -1,3 +1,7 @@
+# ARCHIVED
+
+IMDB changed their public API, this script is no longer able to automatically download the watchlist data. The converter logic from csv file to influxdb might still work.
+
 # imdb-exporter
 
 Bash script that uploads the IMDb Watchlist data to influxdb on a daily basis
