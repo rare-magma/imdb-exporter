@@ -1,19 +1,38 @@
 version: "3"
 services:
   scheduler:
-    image: ghcr.io/reddec/compose-scheduler:1.0.2
+    image: ghcr.io/reddec/compose-scheduler:1.1.0
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 250m
+          pids: 1024
     privileged: true
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   imdb-exporter:
-    image: imdb-exporter:latest
+    image: ghcr.io/rare-magma/imdb-exporter:latest
     init: true
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 64m
+          pids: 16
     volumes:
-      - ./:/app:z
+      - ./imdb_exporter.conf:/app/imdb_exporter.conf:ro
     labels:
       net.reddec.scheduler.cron: "@daily"

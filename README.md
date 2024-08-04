@@ -45,8 +45,8 @@ Bash script that uploads the IMDb Watchlist data to influxdb on a daily basis
 1. Run it.
 
    ```bash
-   docker run --rm --init --tty --interactive --volume $(pwd):/app localhost/imdb-exporter
-   ```
+    docker run --rm --init --tty --interactive --read-only --cap-drop ALL --security-opt no-new-privileges:true --cpus 2 -m 64m --pids-limit 16 --volume ./imdb_exporter.conf:/app/imdb_exporter.conf:ro ghcr.io/rare-magma/imdb-exporter:latest
+    ```
 
 ### With the Makefile
 
